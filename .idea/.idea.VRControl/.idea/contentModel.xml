@@ -4,12 +4,15 @@
     <e p="C:\Users\alien\.Rider2019.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\alien\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_VRControl.1241865175.00" t="ExcludeRecursive" />
     <e p="C:\Users\alien\repos\VRControl" t="IncludeRecursive">
+      <e p=".git\info\exclude" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="VRC" t="Include">
+            <e p="ActionsController.cs" t="Include" />
             <e p="EventLoop.cs" t="Include" />
             <e p="OverlayController.cs" t="Include" />
+            <e p="TrackedDevice.cs" t="Include" />
             <e p="TrackedHand.cs" t="Include" />
             <e p="TrackedHMD.cs" t="Include" />
             <e p="Utils.cs" t="Include" />
@@ -296,10 +299,23 @@
             <e p="SteamVR_Windows_EditorHelper.asmdef" t="Include" />
           </e>
         </e>
+        <e p="SteamVR_Input" t="Include">
+          <e p="ActionSetClasses" t="Include">
+            <e p="SteamVR_Input_ActionSet_buggy.cs" t="Include" />
+            <e p="SteamVR_Input_ActionSet_default.cs" t="Include" />
+            <e p="SteamVR_Input_ActionSet_mixedreality.cs" t="Include" />
+            <e p="SteamVR_Input_ActionSet_platformer.cs" t="Include" />
+          </e>
+          <e p="SteamVR_Actions.asmdef" t="Include" />
+          <e p="SteamVR_Input_Actions.cs" t="Include" />
+          <e p="SteamVR_Input_ActionSets.cs" t="Include" />
+          <e p="SteamVR_Input_Initialization.cs" t="Include" />
+        </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="SteamVR.csproj" t="IncludeRecursive" />
+      <e p="SteamVR_Actions.csproj" t="IncludeRecursive" />
       <e p="SteamVR_Editor.csproj" t="IncludeRecursive" />
       <e p="SteamVR_Input_Editor.csproj" t="IncludeRecursive" />
       <e p="SteamVR_Windows_EditorHelper.csproj" t="IncludeRecursive" />

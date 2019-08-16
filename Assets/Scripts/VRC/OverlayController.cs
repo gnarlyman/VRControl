@@ -52,6 +52,8 @@ namespace VRC
                 "VR Driver: " + vrDriver + "\n" +
                 "VR Display: " + vrDisplay
             );
+            
+            Utils.IdentifyActionsFile();
         }
 
         private static void Shutdown()

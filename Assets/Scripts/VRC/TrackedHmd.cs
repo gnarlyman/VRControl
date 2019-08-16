@@ -34,7 +34,7 @@ namespace VRC
 
         private void OnNewPoses(TrackedDevicePose_t[] poses)
         {
-            var deviceIndex = OpenVR.k_unTrackedDeviceIndex_Hmd;
+            const uint deviceIndex = OpenVR.k_unTrackedDeviceIndex_Hmd;
 
             if (poses.Length < deviceIndex) return;
 
