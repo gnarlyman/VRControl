@@ -9,13 +9,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="VRC" t="Include">
-            <e p="ActionsController.cs" t="Include" />
-            <e p="EventLoop.cs" t="Include" />
-            <e p="OverlayController.cs" t="Include" />
-            <e p="TrackedDevice.cs" t="Include" />
-            <e p="TrackedHand.cs" t="Include" />
-            <e p="TrackedHMD.cs" t="Include" />
-            <e p="Utils.cs" t="Include" />
+            <e p="MainController.cs" t="Include" />
           </e>
         </e>
         <e p="SteamVR" t="Include">
