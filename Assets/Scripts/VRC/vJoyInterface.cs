@@ -6,6 +6,7 @@ namespace VRC
 {
     public class VJoyInterface : MonoBehaviour
     {
+
         private enum VJoyStatus
         {
             Unknown,
@@ -142,6 +143,17 @@ namespace VRC
             vjoy.RelinquishVJD(deviceId);
             SetStatus(VJoyStatus.Unknown);
         }
+        
+        private void Start()
+        {
+            // init axes with a 0 type value
+            SetAxisX(0f);
+            SetAxisY(0f);
+            SetAxisZ(0f);
+            SetAxisXRot(0f);
+            SetAxisYRot(0f);
+            SetAxisZRot(0f);
+        }
 
         private void Update()
         {
@@ -181,13 +193,49 @@ namespace VRC
             }
         }
 
-        public void SetZAxis(float axis)
+        
+        public void SetAxisX(float axis)
         {
-            var z = ScaleAxis(axis, HID_USAGES.HID_USAGE_Z);
-            Debug.Log($"ZAxis:{z} RawAxis:{axis}");
+            var x = ScaleAxis(axis, HID_USAGES.HID_USAGE_X, -1, 1);
+            Debug.Log($"SetAxisX:{x} RawAxis:{axis}");
+            iReport.AxisX = x;
+        }
+        
+        public void SetAxisY(float axis)
+        {
+            var y = ScaleAxis(axis, HID_USAGES.HID_USAGE_Y, -1, 1);
+            Debug.Log($"SetAxisY:{y} RawAxis:{axis}");
+            iReport.AxisY = y;
+        }
+        
+        public void SetAxisZ(float axis)
+        {
+            var z = ScaleAxis(axis, HID_USAGES.HID_USAGE_Z, 0, 1);
+            Debug.Log($"SetAxisZ:{z} RawAxis:{axis}");
             iReport.AxisZ = z;
         }
+        
+        public void SetAxisXRot(float axis)
+        {
+            var rx = ScaleAxis(axis, HID_USAGES.HID_USAGE_RX, -1, 1);
+            Debug.Log($"SetAxisXRot:{rx} RawAxis:{axis}");
+            iReport.AxisXRot = rx;
+        }
 
+        public void SetAxisYRot(float axis)
+        {
+            var ry = ScaleAxis(axis, HID_USAGES.HID_USAGE_RY, -1, 1);
+            Debug.Log($"SetAxisYRot:{ry} RawAxis:{axis}");
+            iReport.AxisYRot = ry;
+        }
+
+        public void SetAxisZRot(float axis)
+        {
+            var rz = ScaleAxis(axis, HID_USAGES.HID_USAGE_RZ, -1, 1);
+            Debug.Log($"SetAxisZRot:{rz} RawAxis:{axis}");
+            iReport.AxisZRot = rz;
+        }
+        
         private int ConvertAxisRatioToAxisInt(float axisRatio, HID_USAGES hid)
         {
             long min = 0, max = 0;
@@ -205,25 +253,27 @@ namespace VRC
             return (int)((long)(range * absRatio) + min);
         }
 
-        /// <summary>scale value m from 0 - 1 to device range</summary>
+        /// <summary>Scale value m from any reference scale to the HID axis scale.</summary>
         /// <param name="m">the value to scale</param>
         /// <param name="hid">the HID axis type</param>
-        private int ScaleAxis(float m, HID_USAGES hid)
+        /// <param name="rMin">minimum value of reference scale</param>
+        /// <param name="rMax">maximum value of reference scale</param>
+        private int ScaleAxis(float m, HID_USAGES hid, float rMin, float rMax)
         {
-            // reference range
-            const float rMin = 0,  rMax = 1;
             // target range
             long tMin = 0, tMax = 0;
-            var gotMin = vjoy.GetVJDAxisMin(deviceId, HID_USAGES.HID_USAGE_X, ref tMin);
-            var gotMax = vjoy.GetVJDAxisMax(deviceId, HID_USAGES.HID_USAGE_X, ref tMax);
+            // todo: no reason to keep requesting the min max, make these constants
+            var gotMin = vjoy.GetVJDAxisMin(deviceId, hid, ref tMin);
+            var gotMax = vjoy.GetVJDAxisMax(deviceId, hid, ref tMax);
             if (!gotMin || !gotMax)
             {
                 Debug.LogWarning($"Error getting min/max of HID axis {hid}");
                 return 0;
             }
-            
+
             // scale m to target scale
             var result = (m - rMin) / (rMax - rMin) * (tMax - tMin) + tMin;
+            
             return (int)result;
         }
         

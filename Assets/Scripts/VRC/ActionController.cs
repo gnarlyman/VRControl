@@ -34,7 +34,30 @@ namespace VRC
             SteamVR_Input_Sources inputSource, float axis, float delta)
         {
             Debug.Log($"Forward Thrust inputSource:{singleAction.activeDevice} {axis}");
-            output.SetZAxis(axis);
+            output.SetAxisZ(axis);
+        }
+        
+        private void ActionHVThrustChange(ISteamVR_Action_In_Source vectorAction,
+            SteamVR_Input_Sources inputSource, Vector2 axis, Vector2 delta)
+        {
+            Debug.Log($"HV Thrust inputSource:{vectorAction.activeDevice} X:{axis.x} Y:{axis.y}");
+            output.SetAxisY(axis.y);
+            output.SetAxisX(axis.x);
+        }
+        
+        private void ActionYawChange(ISteamVR_Action_In_Source vectorAction,
+            SteamVR_Input_Sources inputSource, Vector2 axis, Vector2 delta)
+        {
+            Debug.Log($"Yaw inputSource:{vectorAction.activeDevice} X:{axis.x} Y:{axis.y}");
+            output.SetAxisXRot(axis.x);
+        }
+        
+        private void ActionPitchRollChange(ISteamVR_Action_In_Source vectorAction,
+            SteamVR_Input_Sources inputSource, Vector2 axis, Vector2 delta)
+        {
+            Debug.Log($"Pitch Roll inputSource:{vectorAction.activeDevice} X:{axis.x} Y:{axis.y}");
+            output.SetAxisYRot(axis.x);
+            output.SetAxisZRot(axis.y);
         }
     
         // Start is called before the first frame update
@@ -42,6 +65,9 @@ namespace VRC
         {
             boost.AddOnChangeListener(ActionBoostChange, SteamVR_Input_Sources.LeftHand);
             forwardThrust.AddOnChangeListener(ActionForwardThrustChange, SteamVR_Input_Sources.LeftHand);
+            hvThrust.AddOnChangeListener(ActionHVThrustChange, SteamVR_Input_Sources.LeftHand);
+            yawRotation.AddOnChangeListener(ActionYawChange, SteamVR_Input_Sources.RightHand);
+           
         }
     }
 }
