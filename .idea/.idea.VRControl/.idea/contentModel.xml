@@ -9,7 +9,10 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="VRC" t="Include">
-            <e p="MainController.cs" t="Include" />
+            <e p="ActionController.cs" t="Include" />
+            <e p="ActionMappings.cs" t="Include" />
+            <e p="InitSteamVR.cs" t="Include" />
+            <e p="vJoyInterface.cs" t="Include" />
           </e>
         </e>
         <e p="SteamVR" t="Include">
@@ -299,6 +302,7 @@
             <e p="SteamVR_Input_ActionSet_default.cs" t="Include" />
             <e p="SteamVR_Input_ActionSet_mixedreality.cs" t="Include" />
             <e p="SteamVR_Input_ActionSet_platformer.cs" t="Include" />
+            <e p="SteamVR_Input_ActionSet_vrcontrol.cs" t="Include" />
           </e>
           <e p="SteamVR_Actions.asmdef" t="Include" />
           <e p="SteamVR_Input_Actions.cs" t="Include" />

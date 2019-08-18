@@ -72,6 +72,30 @@
       "name": "/actions/mixedreality/in/ExternalCamera",
       "type": "pose",
       "requirement": "optional"
+    },
+    {
+      "name": "/actions/vrcontrol/in/ForwardThrust",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/vrcontrol/in/BackwardThrust",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/vrcontrol/in/Boost",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrcontrol/in/HVThrust",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/vrcontrol/in/PitchRoll",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/vrcontrol/in/Yaw",
+      "type": "vector2"
     }
   ],
   "action_sets": [
@@ -89,6 +113,10 @@
     },
     {
       "name": "/actions/mixedreality",
+      "usage": "single"
+    },
+    {
+      "name": "/actions/vrcontrol",
       "usage": "single"
     }
   ],
@@ -142,7 +170,11 @@
       "/actions/default/in/SkeletonRightHand": "Skeleton (Right)",
       "/actions/default/in/Teleport": "Teleport",
       "/actions/default/out/Haptic": "Haptic",
-      "/actions/platformer/in/Jump": "Jump"
+      "/actions/platformer/in/Jump": "Jump",
+      "/actions/vrcontrol/in/ForwardThrust": "Forward Thrust",
+      "/actions/vrcontrol/in/BackwardThrust": "Backward Thrust",
+      "/actions/vrcontrol/in/HVThrust": "Horizontal and Vertical Thrust",
+      "/actions/vrcontrol/in/PitchRoll": "Pitch and Yaw"
     }
   ]
 }
