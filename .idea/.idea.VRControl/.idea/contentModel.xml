@@ -12,6 +12,7 @@
             <e p="ActionController.cs" t="Include" />
             <e p="ActionMappings.cs" t="Include" />
             <e p="InitSteamVR.cs" t="Include" />
+            <e p="VirtualJoystick.cs" t="Include" />
             <e p="vJoyInterface.cs" t="Include" />
           </e>
         </e>

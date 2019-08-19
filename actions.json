@@ -94,8 +94,44 @@
       "type": "vector2"
     },
     {
-      "name": "/actions/vrcontrol/in/Yaw",
+      "name": "/actions/vrcontrol/in/GrabJoystick",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrcontrol/in/Left_A",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrcontrol/in/Right A",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrcontrol/in/Left_B",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrcontrol/in/POV1_POS",
       "type": "vector2"
+    },
+    {
+      "name": "/actions/vrcontrol/in/POV2_POS",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/vrcontrol/in/POV1_TOUCH",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrcontrol/in/POV2_TOUCH",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrcontrol/in/UI_ENTER",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/vrcontrol/in/UI_BACK",
+      "type": "boolean"
     }
   ],
   "action_sets": [
@@ -174,7 +210,17 @@
       "/actions/vrcontrol/in/ForwardThrust": "Forward Thrust",
       "/actions/vrcontrol/in/BackwardThrust": "Backward Thrust",
       "/actions/vrcontrol/in/HVThrust": "Horizontal and Vertical Thrust",
-      "/actions/vrcontrol/in/PitchRoll": "Pitch and Yaw"
+      "/actions/vrcontrol/in/PitchRoll": "Pitch and Yaw",
+      "/actions/vrcontrol/in/GrabJoystick": "Grab Joystick",
+      "/actions/vrcontrol/in/Left_A": "Left A",
+      "/actions/vrcontrol/in/Right A": "Right A",
+      "/actions/vrcontrol/in/Left_B": "Left B",
+      "/actions/vrcontrol/in/POV1_POS": "POV1 Position",
+      "/actions/vrcontrol/in/POV2_POS": "POV2 Position",
+      "/actions/vrcontrol/in/POV1_TOUCH": "POV1 Touch",
+      "/actions/vrcontrol/in/POV2_TOUCH": "POV2 Touch",
+      "/actions/vrcontrol/in/UI_ENTER": "UI Enter",
+      "/actions/vrcontrol/in/UI_BACK": "UI Back"
     }
   ]
 }

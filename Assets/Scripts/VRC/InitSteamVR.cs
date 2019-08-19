@@ -11,10 +11,12 @@ namespace VRC
         private IEnumerator Start()
         {
             SteamVR.InitializeStandalone(EVRApplicationType.VRApplication_Overlay);
+            SteamVR_Settings.instance.trackingSpace = ETrackingUniverseOrigin.TrackingUniverseSeated;
 
             while (SteamVR.initializedState == SteamVR.InitializedStates.None || SteamVR.initializedState == SteamVR.InitializedStates.Initializing)
                 yield return null;
             
+            Debug.Log("tracking space: " + SteamVR_Settings.instance.trackingSpace);
         }
 
     }

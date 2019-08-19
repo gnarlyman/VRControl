@@ -57,11 +57,83 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Vector2 Yaw
+        public virtual SteamVR_Action_Boolean GrabJoystick
         {
             get
             {
-                return SteamVR_Actions.vrcontrol_Yaw;
+                return SteamVR_Actions.vrcontrol_GrabJoystick;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Left_A
+        {
+            get
+            {
+                return SteamVR_Actions.vrcontrol_Left_A;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Right_A
+        {
+            get
+            {
+                return SteamVR_Actions.vrcontrol_Right_A;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Left_B
+        {
+            get
+            {
+                return SteamVR_Actions.vrcontrol_Left_B;
+            }
+        }
+        
+        public virtual SteamVR_Action_Vector2 POV1_POS
+        {
+            get
+            {
+                return SteamVR_Actions.vrcontrol_POV1_POS;
+            }
+        }
+        
+        public virtual SteamVR_Action_Vector2 POV2_POS
+        {
+            get
+            {
+                return SteamVR_Actions.vrcontrol_POV2_POS;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean POV1_TOUCH
+        {
+            get
+            {
+                return SteamVR_Actions.vrcontrol_POV1_TOUCH;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean POV2_TOUCH
+        {
+            get
+            {
+                return SteamVR_Actions.vrcontrol_POV2_TOUCH;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean UI_ENTER
+        {
+            get
+            {
+                return SteamVR_Actions.vrcontrol_UI_ENTER;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean UI_BACK
+        {
+            get
+            {
+                return SteamVR_Actions.vrcontrol_UI_BACK;
             }
         }
     }

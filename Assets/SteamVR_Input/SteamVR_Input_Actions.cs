@@ -61,7 +61,25 @@ namespace Valve.VR
         
         private static SteamVR_Action_Vector2 p_vrcontrol_PitchRoll;
         
-        private static SteamVR_Action_Vector2 p_vrcontrol_Yaw;
+        private static SteamVR_Action_Boolean p_vrcontrol_GrabJoystick;
+        
+        private static SteamVR_Action_Boolean p_vrcontrol_Left_A;
+        
+        private static SteamVR_Action_Boolean p_vrcontrol_Right_A;
+        
+        private static SteamVR_Action_Boolean p_vrcontrol_Left_B;
+        
+        private static SteamVR_Action_Vector2 p_vrcontrol_POV1_POS;
+        
+        private static SteamVR_Action_Vector2 p_vrcontrol_POV2_POS;
+        
+        private static SteamVR_Action_Boolean p_vrcontrol_POV1_TOUCH;
+        
+        private static SteamVR_Action_Boolean p_vrcontrol_POV2_TOUCH;
+        
+        private static SteamVR_Action_Boolean p_vrcontrol_UI_ENTER;
+        
+        private static SteamVR_Action_Boolean p_vrcontrol_UI_BACK;
         
         public static SteamVR_Action_Boolean default_InteractUI
         {
@@ -239,11 +257,83 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Action_Vector2 vrcontrol_Yaw
+        public static SteamVR_Action_Boolean vrcontrol_GrabJoystick
         {
             get
             {
-                return SteamVR_Actions.p_vrcontrol_Yaw.GetCopy<SteamVR_Action_Vector2>();
+                return SteamVR_Actions.p_vrcontrol_GrabJoystick.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrcontrol_Left_A
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrcontrol_Left_A.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrcontrol_Right_A
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrcontrol_Right_A.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrcontrol_Left_B
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrcontrol_Left_B.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 vrcontrol_POV1_POS
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrcontrol_POV1_POS.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Vector2 vrcontrol_POV2_POS
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrcontrol_POV2_POS.GetCopy<SteamVR_Action_Vector2>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrcontrol_POV1_TOUCH
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrcontrol_POV1_TOUCH.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrcontrol_POV2_TOUCH
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrcontrol_POV2_TOUCH.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrcontrol_UI_ENTER
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrcontrol_UI_ENTER.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean vrcontrol_UI_BACK
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrcontrol_UI_BACK.GetCopy<SteamVR_Action_Boolean>();
             }
         }
         
@@ -272,7 +362,16 @@ namespace Valve.VR
                     SteamVR_Actions.vrcontrol_Boost,
                     SteamVR_Actions.vrcontrol_HVThrust,
                     SteamVR_Actions.vrcontrol_PitchRoll,
-                    SteamVR_Actions.vrcontrol_Yaw};
+                    SteamVR_Actions.vrcontrol_GrabJoystick,
+                    SteamVR_Actions.vrcontrol_Left_A,
+                    SteamVR_Actions.vrcontrol_Right_A,
+                    SteamVR_Actions.vrcontrol_Left_B,
+                    SteamVR_Actions.vrcontrol_POV1_POS,
+                    SteamVR_Actions.vrcontrol_POV2_POS,
+                    SteamVR_Actions.vrcontrol_POV1_TOUCH,
+                    SteamVR_Actions.vrcontrol_POV2_TOUCH,
+                    SteamVR_Actions.vrcontrol_UI_ENTER,
+                    SteamVR_Actions.vrcontrol_UI_BACK};
             Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
                     SteamVR_Actions.default_InteractUI,
                     SteamVR_Actions.default_Teleport,
@@ -295,7 +394,16 @@ namespace Valve.VR
                     SteamVR_Actions.vrcontrol_Boost,
                     SteamVR_Actions.vrcontrol_HVThrust,
                     SteamVR_Actions.vrcontrol_PitchRoll,
-                    SteamVR_Actions.vrcontrol_Yaw};
+                    SteamVR_Actions.vrcontrol_GrabJoystick,
+                    SteamVR_Actions.vrcontrol_Left_A,
+                    SteamVR_Actions.vrcontrol_Right_A,
+                    SteamVR_Actions.vrcontrol_Left_B,
+                    SteamVR_Actions.vrcontrol_POV1_POS,
+                    SteamVR_Actions.vrcontrol_POV2_POS,
+                    SteamVR_Actions.vrcontrol_POV1_TOUCH,
+                    SteamVR_Actions.vrcontrol_POV2_TOUCH,
+                    SteamVR_Actions.vrcontrol_UI_ENTER,
+                    SteamVR_Actions.vrcontrol_UI_BACK};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
                     SteamVR_Actions.default_Haptic};
             Valve.VR.SteamVR_Input.actionsVibration = new Valve.VR.SteamVR_Action_Vibration[] {
@@ -312,7 +420,15 @@ namespace Valve.VR
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset,
-                    SteamVR_Actions.vrcontrol_Boost};
+                    SteamVR_Actions.vrcontrol_Boost,
+                    SteamVR_Actions.vrcontrol_GrabJoystick,
+                    SteamVR_Actions.vrcontrol_Left_A,
+                    SteamVR_Actions.vrcontrol_Right_A,
+                    SteamVR_Actions.vrcontrol_Left_B,
+                    SteamVR_Actions.vrcontrol_POV1_TOUCH,
+                    SteamVR_Actions.vrcontrol_POV2_TOUCH,
+                    SteamVR_Actions.vrcontrol_UI_ENTER,
+                    SteamVR_Actions.vrcontrol_UI_BACK};
             Valve.VR.SteamVR_Input.actionsSingle = new Valve.VR.SteamVR_Action_Single[] {
                     SteamVR_Actions.default_Squeeze,
                     SteamVR_Actions.buggy_Throttle,
@@ -323,7 +439,8 @@ namespace Valve.VR
                     SteamVR_Actions.buggy_Steering,
                     SteamVR_Actions.vrcontrol_HVThrust,
                     SteamVR_Actions.vrcontrol_PitchRoll,
-                    SteamVR_Actions.vrcontrol_Yaw};
+                    SteamVR_Actions.vrcontrol_POV1_POS,
+                    SteamVR_Actions.vrcontrol_POV2_POS};
             Valve.VR.SteamVR_Input.actionsVector3 = new Valve.VR.SteamVR_Action_Vector3[0];
             Valve.VR.SteamVR_Input.actionsSkeleton = new Valve.VR.SteamVR_Action_Skeleton[] {
                     SteamVR_Actions.default_SkeletonLeftHand,
@@ -346,7 +463,16 @@ namespace Valve.VR
                     SteamVR_Actions.vrcontrol_Boost,
                     SteamVR_Actions.vrcontrol_HVThrust,
                     SteamVR_Actions.vrcontrol_PitchRoll,
-                    SteamVR_Actions.vrcontrol_Yaw};
+                    SteamVR_Actions.vrcontrol_GrabJoystick,
+                    SteamVR_Actions.vrcontrol_Left_A,
+                    SteamVR_Actions.vrcontrol_Right_A,
+                    SteamVR_Actions.vrcontrol_Left_B,
+                    SteamVR_Actions.vrcontrol_POV1_POS,
+                    SteamVR_Actions.vrcontrol_POV2_POS,
+                    SteamVR_Actions.vrcontrol_POV1_TOUCH,
+                    SteamVR_Actions.vrcontrol_POV2_TOUCH,
+                    SteamVR_Actions.vrcontrol_UI_ENTER,
+                    SteamVR_Actions.vrcontrol_UI_BACK};
         }
         
         private static void PreInitActions()
@@ -373,7 +499,16 @@ namespace Valve.VR
             SteamVR_Actions.p_vrcontrol_Boost = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/Boost")));
             SteamVR_Actions.p_vrcontrol_HVThrust = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/vrcontrol/in/HVThrust")));
             SteamVR_Actions.p_vrcontrol_PitchRoll = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/vrcontrol/in/PitchRoll")));
-            SteamVR_Actions.p_vrcontrol_Yaw = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/vrcontrol/in/Yaw")));
+            SteamVR_Actions.p_vrcontrol_GrabJoystick = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/GrabJoystick")));
+            SteamVR_Actions.p_vrcontrol_Left_A = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/Left_A")));
+            SteamVR_Actions.p_vrcontrol_Right_A = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/Right A")));
+            SteamVR_Actions.p_vrcontrol_Left_B = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/Left_B")));
+            SteamVR_Actions.p_vrcontrol_POV1_POS = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/vrcontrol/in/POV1_POS")));
+            SteamVR_Actions.p_vrcontrol_POV2_POS = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/vrcontrol/in/POV2_POS")));
+            SteamVR_Actions.p_vrcontrol_POV1_TOUCH = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/POV1_TOUCH")));
+            SteamVR_Actions.p_vrcontrol_POV2_TOUCH = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/POV2_TOUCH")));
+            SteamVR_Actions.p_vrcontrol_UI_ENTER = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/UI_ENTER")));
+            SteamVR_Actions.p_vrcontrol_UI_BACK = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/UI_BACK")));
         }
     }
 }
