@@ -20,14 +20,15 @@ namespace VRC
             Ready,
         }
         
-        [Range(0f, 90f)]
-        public float joystickDeadzoneDegrees = 0f;
-        [Range(0f, 90f)]
-        public float joystickMaxDegrees = 90f;
-        [Range(0f, 100f)]
-        public float throttleDeadzonePercentage = 0f;
-        [Range(0f, 100f)]
-        public float directionalThrustersDeadzonePercentage = 0f;
+        public enum HatDirection : byte
+        {
+            Up = 0,
+            Right = 1,
+            Down = 2,
+            Left = 3,
+            Neutral = 0xF,
+        }
+        
         [Range(8, 128)]
         public uint maxButtons = 32;
 
@@ -40,6 +41,13 @@ namespace VRC
         private uint buttons;
         
         private static VJoyStatus vJoyStatus = VJoyStatus.Unknown;
+        
+        private HatDirection[] hat = {
+            HatDirection.Neutral,
+            HatDirection.Neutral,
+            HatDirection.Neutral,
+            HatDirection.Neutral,
+        };
         
 
         private static void SetStatus(VJoyStatus status)
@@ -147,12 +155,12 @@ namespace VRC
         private void Start()
         {
             // init axes with a 0 type value
-            SetAxisX(0f);
-            SetAxisY(0f);
-            SetAxisZ(0f);
-            SetAxisXRot(0f);
-            SetAxisYRot(0f);
-            SetAxisZRot(0f);
+            SetAxisX(0f, -1, 1);
+            SetAxisY(0f, -1, 1);
+            SetAxisZ(0f, -1, 1);
+            SetAxisXRot(0f, -1, 1);
+            SetAxisYRot(0f, -1, 1);
+            SetAxisZRot(0f, -1, 1);
         }
 
         private void Update()
@@ -160,6 +168,11 @@ namespace VRC
             iReport.bDevice = (byte) deviceId;
             
             iReport.Buttons = buttons;
+            
+            iReport.bHats = (uint)((byte)hat[3] << 12)
+                            | (uint)((byte)hat[2] << 8)
+                            | (uint)((byte)hat[1] << 4)
+                            | (uint)hat[0];
             
             // ReSharper disable once InvertIf
             if (!vjoy.UpdateVJD(deviceId, ref iReport))
@@ -192,47 +205,62 @@ namespace VRC
                 buttons &= ~((uint)1 << buttonIndex);
             }
         }
+        
+        public void SetHatDirection(uint hatNumber, HatDirection dir)
+        {
+            int hatIndex = (int)hatNumber - 1;
+            if (hatNumber == 0)
+            {
+                throw new System.IndexOutOfRangeException("Button number 0 is too low, button numbers are zero indexed");
+            }
+            if (hatIndex >= 4)
+            {
+                throw new System.IndexOutOfRangeException(string.Format("HAT index {0} is too high", hatIndex));
+            }
+
+            hat[hatIndex] = dir;
+        }
 
         
-        public void SetAxisX(float axis)
+        public void SetAxisX(float axis, float rMin, float rMax)
         {
-            var x = ScaleAxis(axis, HID_USAGES.HID_USAGE_X, -1, 1);
-            Debug.Log($"SetAxisX:{x} RawAxis:{axis}");
+            var x = ScaleAxis(axis, HID_USAGES.HID_USAGE_X, rMin, rMax);
+//            Debug.Log($"SetAxisX:{x} RawAxis:{axis}");
             iReport.AxisX = x;
         }
         
-        public void SetAxisY(float axis)
+        public void SetAxisY(float axis, float rMin, float rMax)
         {
-            var y = ScaleAxis(axis, HID_USAGES.HID_USAGE_Y, -1, 1);
-            Debug.Log($"SetAxisY:{y} RawAxis:{axis}");
+            var y = ScaleAxis(axis, HID_USAGES.HID_USAGE_Y, rMin, rMax);
+//            Debug.Log($"SetAxisY:{y} RawAxis:{axis}");
             iReport.AxisY = y;
         }
         
-        public void SetAxisZ(float axis)
+        public void SetAxisZ(float axis, float rMin, float rMax)
         {
-            var z = ScaleAxis(axis, HID_USAGES.HID_USAGE_Z, 0, 1);
-            Debug.Log($"SetAxisZ:{z} RawAxis:{axis}");
+            var z = ScaleAxis(axis, HID_USAGES.HID_USAGE_Z, rMin, rMax);
+//            Debug.Log($"SetAxisZ:{z} RawAxis:{axis}");
             iReport.AxisZ = z;
         }
         
-        public void SetAxisXRot(float axis)
+        public void SetAxisXRot(float axis, float rMin, float rMax)
         {
-            var rx = ScaleAxis(axis, HID_USAGES.HID_USAGE_RX, -1, 1);
-            Debug.Log($"SetAxisXRot:{rx} RawAxis:{axis}");
+            var rx = ScaleAxis(axis, HID_USAGES.HID_USAGE_RX, rMin, rMax);
+//            Debug.Log($"SetAxisXRot:{rx} RawAxis:{axis}");
             iReport.AxisXRot = rx;
         }
 
-        public void SetAxisYRot(float axis)
+        public void SetAxisYRot(float axis, float rMin, float rMax)
         {
-            var ry = ScaleAxis(axis, HID_USAGES.HID_USAGE_RY, -1, 1);
-            Debug.Log($"SetAxisYRot:{ry} RawAxis:{axis}");
+            var ry = ScaleAxis(axis, HID_USAGES.HID_USAGE_RY, rMin, rMax);
+//            Debug.Log($"SetAxisYRot:{ry} RawAxis:{axis}");
             iReport.AxisYRot = ry;
         }
 
-        public void SetAxisZRot(float axis)
+        public void SetAxisZRot(float axis, float rMin, float rMax)
         {
-            var rz = ScaleAxis(axis, HID_USAGES.HID_USAGE_RZ, -1, 1);
-            Debug.Log($"SetAxisZRot:{rz} RawAxis:{axis}");
+            var rz = ScaleAxis(axis, HID_USAGES.HID_USAGE_RZ, rMin, rMax);
+//            Debug.Log($"SetAxisZRot:{rz} RawAxis:{axis}");
             iReport.AxisZRot = rz;
         }
         
