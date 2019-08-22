@@ -132,6 +132,14 @@
     {
       "name": "/actions/vrcontrol/in/UI_BACK",
       "type": "boolean"
+    },
+    {
+      "name": "/actions/vrcontrol/in/GripLeft",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/vrcontrol/in/GripRight",
+      "type": "vector1"
     }
   ],
   "action_sets": [
@@ -220,7 +228,9 @@
       "/actions/vrcontrol/in/POV1_TOUCH": "POV1 Touch",
       "/actions/vrcontrol/in/POV2_TOUCH": "POV2 Touch",
       "/actions/vrcontrol/in/UI_ENTER": "UI Enter",
-      "/actions/vrcontrol/in/UI_BACK": "UI Back"
+      "/actions/vrcontrol/in/UI_BACK": "UI Back",
+      "/actions/vrcontrol/in/GripLeft": "Grip Left",
+      "/actions/vrcontrol/in/GripRight": "Grip Right"
     }
   ]
 }

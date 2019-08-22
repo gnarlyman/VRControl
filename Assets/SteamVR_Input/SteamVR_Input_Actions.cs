@@ -81,6 +81,10 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_vrcontrol_UI_BACK;
         
+        private static SteamVR_Action_Single p_vrcontrol_GripLeft;
+        
+        private static SteamVR_Action_Single p_vrcontrol_GripRight;
+        
         public static SteamVR_Action_Boolean default_InteractUI
         {
             get
@@ -337,6 +341,22 @@ namespace Valve.VR
             }
         }
         
+        public static SteamVR_Action_Single vrcontrol_GripLeft
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrcontrol_GripLeft.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
+        public static SteamVR_Action_Single vrcontrol_GripRight
+        {
+            get
+            {
+                return SteamVR_Actions.p_vrcontrol_GripRight.GetCopy<SteamVR_Action_Single>();
+            }
+        }
+        
         private static void InitializeActionArrays()
         {
             Valve.VR.SteamVR_Input.actions = new Valve.VR.SteamVR_Action[] {
@@ -371,7 +391,9 @@ namespace Valve.VR
                     SteamVR_Actions.vrcontrol_POV1_TOUCH,
                     SteamVR_Actions.vrcontrol_POV2_TOUCH,
                     SteamVR_Actions.vrcontrol_UI_ENTER,
-                    SteamVR_Actions.vrcontrol_UI_BACK};
+                    SteamVR_Actions.vrcontrol_UI_BACK,
+                    SteamVR_Actions.vrcontrol_GripLeft,
+                    SteamVR_Actions.vrcontrol_GripRight};
             Valve.VR.SteamVR_Input.actionsIn = new Valve.VR.ISteamVR_Action_In[] {
                     SteamVR_Actions.default_InteractUI,
                     SteamVR_Actions.default_Teleport,
@@ -403,7 +425,9 @@ namespace Valve.VR
                     SteamVR_Actions.vrcontrol_POV1_TOUCH,
                     SteamVR_Actions.vrcontrol_POV2_TOUCH,
                     SteamVR_Actions.vrcontrol_UI_ENTER,
-                    SteamVR_Actions.vrcontrol_UI_BACK};
+                    SteamVR_Actions.vrcontrol_UI_BACK,
+                    SteamVR_Actions.vrcontrol_GripLeft,
+                    SteamVR_Actions.vrcontrol_GripRight};
             Valve.VR.SteamVR_Input.actionsOut = new Valve.VR.ISteamVR_Action_Out[] {
                     SteamVR_Actions.default_Haptic};
             Valve.VR.SteamVR_Input.actionsVibration = new Valve.VR.SteamVR_Action_Vibration[] {
@@ -433,7 +457,9 @@ namespace Valve.VR
                     SteamVR_Actions.default_Squeeze,
                     SteamVR_Actions.buggy_Throttle,
                     SteamVR_Actions.vrcontrol_ForwardThrust,
-                    SteamVR_Actions.vrcontrol_BackwardThrust};
+                    SteamVR_Actions.vrcontrol_BackwardThrust,
+                    SteamVR_Actions.vrcontrol_GripLeft,
+                    SteamVR_Actions.vrcontrol_GripRight};
             Valve.VR.SteamVR_Input.actionsVector2 = new Valve.VR.SteamVR_Action_Vector2[] {
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.buggy_Steering,
@@ -472,7 +498,9 @@ namespace Valve.VR
                     SteamVR_Actions.vrcontrol_POV1_TOUCH,
                     SteamVR_Actions.vrcontrol_POV2_TOUCH,
                     SteamVR_Actions.vrcontrol_UI_ENTER,
-                    SteamVR_Actions.vrcontrol_UI_BACK};
+                    SteamVR_Actions.vrcontrol_UI_BACK,
+                    SteamVR_Actions.vrcontrol_GripLeft,
+                    SteamVR_Actions.vrcontrol_GripRight};
         }
         
         private static void PreInitActions()
@@ -509,6 +537,8 @@ namespace Valve.VR
             SteamVR_Actions.p_vrcontrol_POV2_TOUCH = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/POV2_TOUCH")));
             SteamVR_Actions.p_vrcontrol_UI_ENTER = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/UI_ENTER")));
             SteamVR_Actions.p_vrcontrol_UI_BACK = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/vrcontrol/in/UI_BACK")));
+            SteamVR_Actions.p_vrcontrol_GripLeft = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/vrcontrol/in/GripLeft")));
+            SteamVR_Actions.p_vrcontrol_GripRight = ((SteamVR_Action_Single)(SteamVR_Action.Create<SteamVR_Action_Single>("/actions/vrcontrol/in/GripRight")));
         }
     }
 }

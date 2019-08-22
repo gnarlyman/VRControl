@@ -136,5 +136,21 @@ namespace Valve.VR
                 return SteamVR_Actions.vrcontrol_UI_BACK;
             }
         }
+        
+        public virtual SteamVR_Action_Single GripLeft
+        {
+            get
+            {
+                return SteamVR_Actions.vrcontrol_GripLeft;
+            }
+        }
+        
+        public virtual SteamVR_Action_Single GripRight
+        {
+            get
+            {
+                return SteamVR_Actions.vrcontrol_GripRight;
+            }
+        }
     }
 }

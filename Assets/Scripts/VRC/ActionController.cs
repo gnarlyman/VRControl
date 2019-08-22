@@ -9,7 +9,13 @@ namespace VRC
     {
         public SteamVR_Action_Single forwardThrust = 
             SteamVR_Input.GetAction<SteamVR_Action_Single>("vrcontrol", "ForwardThrust");
+        
+        public SteamVR_Action_Single gripLeft =
+            SteamVR_Input.GetAction<SteamVR_Action_Single>("vrcontrol", "GripLeft");
 
+        public SteamVR_Action_Single gripRight =
+            SteamVR_Input.GetAction<SteamVR_Action_Single>("vrcontrol", "GripRight");
+        
         public SteamVR_Action_Vector2 hvThrust =
             SteamVR_Input.GetAction<SteamVR_Action_Vector2>("vrcontrol", "HVThrust");
         
@@ -42,6 +48,7 @@ namespace VRC
         
         public VJoyInterface output;
         public VirtualJoystick joy;
+        public VirtualThrottle throttle;
 
         private void ActionBoostChange(ISteamVR_Action_In_Source booleanAction, 
             SteamVR_Input_Sources inputSource, bool activeBinding)
@@ -62,6 +69,30 @@ namespace VRC
         {
 //            Debug.Log($"UI Enter inputSource:{booleanAction.activeDevice} {activeBinding}");
             output.SetButton((uint)ActionMappings.UiEnter, activeBinding);
+        }
+        
+        private void ActionGripLeftChange(ISteamVR_Action_In_Source booleanAction, 
+            SteamVR_Input_Sources inputSource, float axis, float delta)
+        {
+            if (axis > 0.8f)
+            {
+                throttle.gripped = true;
+            } else if (axis < 0.2f)
+            {
+                throttle.gripped = false;
+            }
+        }
+        
+        private void ActionGripRightChange(ISteamVR_Action_In_Source booleanAction, 
+            SteamVR_Input_Sources inputSource, float axis, float delta)
+        {
+            if (axis > 0.8f)
+            {
+                joy.gripped = true;
+            } else if (axis < 0.2f)
+            {
+                joy.gripped = false;
+            }
         }
         
         private void ActionUiBackChange(ISteamVR_Action_In_Source booleanAction, 
@@ -230,6 +261,8 @@ namespace VRC
             uiEnter.AddOnChangeListener(ActionUiEnterChange, SteamVR_Input_Sources.RightHand);
             uiBack.AddOnChangeListener(ActionUiBackChange, SteamVR_Input_Sources.RightHand);
             pitchRoll.AddOnChangeListener(ActionPitchRollChange, SteamVR_Input_Sources.RightHand);
+            gripLeft.AddOnChangeListener(ActionGripLeftChange, SteamVR_Input_Sources.LeftHand);
+            gripRight.AddOnChangeListener(ActionGripRightChange, SteamVR_Input_Sources.RightHand);
         }
     }
 }

@@ -13,6 +13,7 @@
             <e p="ActionMappings.cs" t="Include" />
             <e p="InitSteamVR.cs" t="Include" />
             <e p="VirtualJoystick.cs" t="Include" />
+            <e p="VirtualThrottle.cs" t="Include" />
             <e p="vJoyInterface.cs" t="Include" />
           </e>
         </e>

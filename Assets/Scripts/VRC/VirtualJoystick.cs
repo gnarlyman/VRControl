@@ -38,13 +38,13 @@ namespace VRC
 
         private void Start()
         {
-            var zeroPointObject = new GameObject("[ZeroPoint-Joystick]");
+            var zeroPointObject = new GameObject("[ZeroPoint]");
             zeroPoint = zeroPointObject.transform;
             zeroPoint.SetParent(transform);
             zeroPoint.localPosition = Vector3.zero;
             zeroPoint.localRotation = Quaternion.identity;
 
-            var rotationPointObject = new GameObject("[RotationPoint-Joystick]");
+            var rotationPointObject = new GameObject("[RotationPoint]");
             rotationPoint = rotationPointObject.transform;
             rotationPoint.SetParent(zeroPoint);
             rotationPoint.localPosition = Vector3.zero;
