@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/VROverlayStandalone.unity
+    guid: 55234b38b8222a841b0ed97adbe03b30
   m_configObjects: {}

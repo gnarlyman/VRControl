@@ -18,6 +18,9 @@ namespace VRC
         
         public SteamVR_Action_Vector2 pov2Pos =
             SteamVR_Input.GetAction<SteamVR_Action_Vector2>("vrcontrol", "POV2_POS");
+        
+        public SteamVR_Action_Vector2 pitchRoll =
+            SteamVR_Input.GetAction<SteamVR_Action_Vector2>("vrcontrol", "PitchRoll");
 
         public SteamVR_Action_Boolean boost =
             SteamVR_Input.GetAction<SteamVR_Action_Boolean>("vrcontrol", "Boost");
@@ -83,13 +86,13 @@ namespace VRC
             output.SetAxisX(axis.x, -1f, 1f);
         }
         
-        private void ActionYawChange(ISteamVR_Action_In_Source vectorAction,
+        private void ActionPitchRollChange(ISteamVR_Action_In_Source vectorAction,
             SteamVR_Input_Sources inputSource, Vector2 axis, Vector2 delta)
         {
-//            Debug.Log($"Yaw inputSource:{vectorAction.activeDevice} X:{axis.x} Y:{axis.y}");
-            output.SetAxisXRot(axis.x, -1f, 1f);
+            output.SetAxisXRot(axis.y, -1f, 1f);
+            output.SetAxisYRot(axis.x, -1f, 1f);
         }
-
+        
         private IEnumerator UnpressPov1Button(float time, ActionMappings button)
         {
             yield return new WaitForSeconds(time);
@@ -226,6 +229,7 @@ namespace VRC
             grabJoystick.AddOnChangeListener(ActionGrabJoystickChange, SteamVR_Input_Sources.RightHand);
             uiEnter.AddOnChangeListener(ActionUiEnterChange, SteamVR_Input_Sources.RightHand);
             uiBack.AddOnChangeListener(ActionUiBackChange, SteamVR_Input_Sources.RightHand);
+            pitchRoll.AddOnChangeListener(ActionPitchRollChange, SteamVR_Input_Sources.RightHand);
         }
     }
 }

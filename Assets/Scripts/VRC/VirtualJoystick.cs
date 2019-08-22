@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Valve.VR;
 
 namespace VRC
@@ -7,7 +6,7 @@ namespace VRC
     public class VirtualJoystick: MonoBehaviour
     {
         [Range(0f, 90f)]
-        public float joystickDeadzoneDegrees = 0f;
+        public float joystickDeadzoneDegrees;
         
         public SteamVR_Behaviour_Pose hand;
         
@@ -39,13 +38,13 @@ namespace VRC
 
         private void Start()
         {
-            var zeroPointObject = new GameObject("[ZeroPoint]");
+            var zeroPointObject = new GameObject("[ZeroPoint-Joystick]");
             zeroPoint = zeroPointObject.transform;
             zeroPoint.SetParent(transform);
             zeroPoint.localPosition = Vector3.zero;
             zeroPoint.localRotation = Quaternion.identity;
 
-            var rotationPointObject = new GameObject("[RotationPoint]");
+            var rotationPointObject = new GameObject("[RotationPoint-Joystick]");
             rotationPoint = rotationPointObject.transform;
             rotationPoint.SetParent(zeroPoint);
             rotationPoint.localPosition = Vector3.zero;

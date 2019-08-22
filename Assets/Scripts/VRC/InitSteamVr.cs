@@ -4,7 +4,7 @@ using Valve.VR;
 
 namespace VRC
 {
-    public class InitSteamVR : MonoBehaviour
+    public class InitSteamVr : MonoBehaviour
     {
         
         // Start is called before the first frame update

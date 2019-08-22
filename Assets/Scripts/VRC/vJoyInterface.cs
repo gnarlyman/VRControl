@@ -19,16 +19,7 @@ namespace VRC
             DeviceNotAquired,
             Ready,
         }
-        
-        public enum HatDirection : byte
-        {
-            Up = 0,
-            Right = 1,
-            Down = 2,
-            Left = 3,
-            Neutral = 0xF,
-        }
-        
+
         [Range(8, 128)]
         public uint maxButtons = 32;
 
@@ -41,14 +32,6 @@ namespace VRC
         private uint buttons;
         
         private static VJoyStatus vJoyStatus = VJoyStatus.Unknown;
-        
-        private HatDirection[] hat = {
-            HatDirection.Neutral,
-            HatDirection.Neutral,
-            HatDirection.Neutral,
-            HatDirection.Neutral,
-        };
-        
 
         private static void SetStatus(VJoyStatus status)
         {
@@ -168,12 +151,7 @@ namespace VRC
             iReport.bDevice = (byte) deviceId;
             
             iReport.Buttons = buttons;
-            
-            iReport.bHats = (uint)((byte)hat[3] << 12)
-                            | (uint)((byte)hat[2] << 8)
-                            | (uint)((byte)hat[1] << 4)
-                            | (uint)hat[0];
-            
+
             // ReSharper disable once InvertIf
             if (!vjoy.UpdateVJD(deviceId, ref iReport))
             {
@@ -187,12 +165,12 @@ namespace VRC
             var buttonIndex = (int)buttonNumber - 1;
             if (buttonNumber == 0)
             {
-                throw new System.IndexOutOfRangeException(
+                throw new IndexOutOfRangeException(
                     "Button number 0 is too low, button numbers are zero indexed");
             }
             if (buttonIndex >= maxButtons)
             {
-                throw new System.IndexOutOfRangeException(
+                throw new IndexOutOfRangeException(
                     $"Button index {buttonIndex} is too high");
             }
 
@@ -205,23 +183,7 @@ namespace VRC
                 buttons &= ~((uint)1 << buttonIndex);
             }
         }
-        
-        public void SetHatDirection(uint hatNumber, HatDirection dir)
-        {
-            int hatIndex = (int)hatNumber - 1;
-            if (hatNumber == 0)
-            {
-                throw new System.IndexOutOfRangeException("Button number 0 is too low, button numbers are zero indexed");
-            }
-            if (hatIndex >= 4)
-            {
-                throw new System.IndexOutOfRangeException(string.Format("HAT index {0} is too high", hatIndex));
-            }
 
-            hat[hatIndex] = dir;
-        }
-
-        
         public void SetAxisX(float axis, float rMin, float rMax)
         {
             var x = ScaleAxis(axis, HID_USAGES.HID_USAGE_X, rMin, rMax);
@@ -262,23 +224,6 @@ namespace VRC
             var rz = ScaleAxis(axis, HID_USAGES.HID_USAGE_RZ, rMin, rMax);
 //            Debug.Log($"SetAxisZRot:{rz} RawAxis:{axis}");
             iReport.AxisZRot = rz;
-        }
-        
-        private int ConvertAxisRatioToAxisInt(float axisRatio, HID_USAGES hid)
-        {
-            long min = 0, max = 0;
-            var gotMin = vjoy.GetVJDAxisMin(deviceId, HID_USAGES.HID_USAGE_X, ref min);
-            var gotMax = vjoy.GetVJDAxisMax(deviceId, HID_USAGES.HID_USAGE_X, ref max);
-            if (!gotMin || !gotMax)
-            {
-                Debug.LogWarning($"Error getting min/max of HID axis {hid}");
-                return 0;
-            }
-
-            // Get an absolute ratio where 0 is -Max, .5 is 0, and 1 is +Max
-            var absRatio = axisRatio / 2f + .5f;
-            var range = max - min;
-            return (int)((long)(range * absRatio) + min);
         }
 
         /// <summary>Scale value m from any reference scale to the HID axis scale.</summary>
